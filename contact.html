@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Empowered Living</title>
+    <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --highlight-color: #9370db;
+            --footer-color: #2c2c2c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .page-banner {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/api/placeholder/1200/300");
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-method {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-method h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--highlight-color);
+        }
+        
+        .faq-section {
+            margin-top: 4rem;
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .faq-section h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-connect {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .social-connect h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--highlight-color);
+        }
+        
+        footer {
+            background-color: var(--footer-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-links {
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                order: 2;
+            }
+            
+            .contact-form {
+                order: 1;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Empowered Living</h1>
+        <p>Your journey to personal growth and empowerment</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="page-banner">
+        <h1>Connect With Us</h1>
+    </div>
+    
+    <main>
+        <section class="contact-intro">
+            <h2>We'd Love to Hear From You</h2>
+            <p>Have a question, comment, or suggestion? Want to share your empowerment story or collaborate with us? We're here to connect.</p>
+        </section>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                
+                <div class="contact-method">
+                    <h4>Email</h4>
+                    <p>hello@empoweredliving.com</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>Office Hours</h4>
+                    <p>Monday - Friday: 9am - 5pm EST</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>Mailing Address</h4>
+                    <p>
+                        Empowered Living<br>
+                        123 Growth Avenue<br>
+                        Suite 456<br>
+                        Mindful City, MC 98765
+                    </p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>Response Time</h4>
+                    <p>We aim to respond to all inquiries within 24-48 hours during business days.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="collaboration">Collaboration Opportunity</option>
+                            <option value="speaking">Speaking Request</option>
+                            <option value="share-story">Share Your Story</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <section class="faq-section">
+            <h3>Frequently Asked Questions</h3>
+            
+            <div class="faq-item">
+                <p class="faq-question">How can I contribute content to Empowered Living?</p>
+                <p class="faq-answer">We welcome guest contributions from individuals who have personal insights on empowerment topics. Please use our contact form and select "Collaboration Opportunity" to start the conversation. Include your topic idea and any previous writing samples.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Do you offer coaching or consulting services?</p>
+                <p class="faq-answer">While we primarily share content through our blog, we do offer limited coaching and consulting services for individuals and organizations. Contact us with details about your needs, and we'll let you know how we might help.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">How can I request a topic to be covered on your blog?</p>
+                <p class="faq-answer">We love hearing what our community wants to learn about! Send us your topic suggestions through the contact form, and we'll consider them for future content.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">Can I book someone from Empowered Living for a speaking engagement?</p>
+                <p class="faq-answer">Yes! We have speakers available for conferences, workshops, and corporate events on various empowerment topics. Please use our contact form and select "Speaking Request" with details about your event.</p>
+            </div>
+        </section>
+        
+        <section class="social-connect">
+            <h3>Connect With Us on Social Media</h3>
+            <p>Join our community of empowered individuals and get daily inspiration, tips, and updates.</p>
+            
+            <div class="social-icons">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <h3>Empowered Living</h3>
+        <p>Dedicated to your growth and transformation</p>
+        
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#blog">Blog</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Use</a>
+        </div>
+        
+        <p>Contact: hello@empoweredliving.com</p>
+        <p>&copy; 2025 Empowered Living. All rights reserved.</p>
+    </footer>
+</body>
+</html>

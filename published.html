@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowered Publishing Studio | Books & Music</title>
+    <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --highlight-color: #9370db;
+            --footer-color: #2c2c2c;
+            --accent-color: #5d4cb8;
+            --light-accent: #eeeaff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/api/placeholder/1200/400");
+            height: 400px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--highlight-color);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .service-card {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-feature {
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-feature h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-section {
+            margin: 4rem 0;
+        }
+        
+        .portfolio-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .portfolio-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--secondary-color);
+            border: none;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: white;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-info h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--light-accent);
+            color: var(--primary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonials {
+            background-color: var(--light-accent);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: "";
+            font-size: 4rem;
+            position: absolute;
+            top: -2rem;
+            left: -1rem;
+            color: var(--light-accent);
+            z-index: -1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .testimonial-title {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .process-section {
+            margin: 4rem 0;
+        }
+        
+        .process-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .submission-section {
+            background-color: var(--secondary-color);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .submission-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .submission-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-method {
+            text-align: center;
+            max-width: 250px;
+        }
+        
+        .contact-method h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--footer-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .portfolio-tab {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Empowered Publishing Studio</h1>
+        <p>Amplifying authentic voices through books and music</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#submit">Submit</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your Creative Vision, Our Publishing Expertise</h1>
+            <p>Empowered Publishing Studio helps authors and musicians share their unique voice with the world through professional publishing services.</p>
+            <a href="#submit" class="cta-button">Submit Your Work</a>
+        </div>
+    </div>
+    
+    <main>
+        <section class="intro-section">
+            <h2>Where Words and Melodies Come to Life</h2>
+            <p>Empowered Publishing Studio is a boutique publishing house dedicated to bringing transformative books and music to audiences seeking inspiration, growth, and authentic connection. We partner with authors and musicians who have something meaningful to share with the world.</p>
+        </section>
+        
+        <section id="services" class="services-section">
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 2rem;">Our Publishing Services</h2>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Book Publishing</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-feature">
+                            <h4>Manuscript Development</h4>
+                            <p>Professional guidance to refine your manuscript, from structural editing to line editing and proofreading.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Cover Design & Layout</h4>
+                            <p>Eye-catching cover design and professional interior layout to create a polished, market-ready book.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Distribution & Marketing</h4>
+                            <p>Global distribution through major retailers, plus strategic marketing support to reach your target audience.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Audiobook Production</h4>
+                            <p>Professional recording and distribution of your audiobook to capture the growing audio market.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Author Platform Building</h4>
+                            <p>Guidance on developing your author platform and connecting with readers effectively.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Music Publishing</h3>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-feature">
+                            <h4>Song Development</h4>
+                            <p>Professional feedback and refinement for your compositions to ensure they reach their full potential.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Recording & Production</h4>
+                            <p>Access to quality recording facilities and experienced producers to create polished tracks.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Distribution & Licensing</h4>
+                            <p>Global digital distribution and active licensing opportunities for film, TV, and advertising.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Royalty Management</h4>
+                            <p>Efficient collection and administration of your publishing royalties from around the world.</p>
+                        </div>
+                        
+                        <div class="service-feature">
+                            <h4>Artist Development</h4>
+                            <p>Guidance on building your artist brand and connecting with your audience authentically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio" class="portfolio-section">
+            <h2>Our Published Works</h2>
+            
+            <div class="portfolio-tabs">
+                <button class="portfolio-tab active">All</button>
+                <button class="portfolio-tab">Books</button>
+                <button class="portfolio-tab">Music</button>
+                <button class="portfolio-tab">Bestsellers</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Book</span>
+                        <span class="tag">Self-Development</span>
+                        <h4>The Inner Journey</h4>
+                        <p>By Sarah Johnson</p>
+                        <p>A transformative guide to personal growth and self-discovery.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Music</span>
+                        <span class="tag">Folk</span>
+                        <h4>Whispers of the Land</h4>
+                        <p>By The River Collective</p>
+                        <p>A soul-stirring album exploring connection to nature and community.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Book</span>
+                        <span class="tag">Business</span>
+                        <h4>Conscious Leadership</h4>
+                        <p>By Michael Torres</p>
+                        <p>Reimagining business leadership for a more human-centered future.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Music</span>
+                        <span class="tag">Indie</span>
+                        <h4>Urban Reflections</h4>
+                        <p>By Echo Park</p>
+                        <p>Contemporary sounds reflecting modern urban experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Book</span>
+                        <span class="tag">Memoir</span>
+                        <h4>Across Mountains</h4>
+                        <p>By Elena Patel</p>
+                        <p>A powerful journey of resilience and transformation.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="portfolio-info">
+                        <span class="tag">Music</span>
+                        <span class="tag">Jazz</span>
+                        <h4>Midnight Conversations</h4>
+                        <p>By The James Quintet</p>
+                        <p>Soulful jazz explorations of human connection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2>What Our Creators Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Working with Empowered Publishing transformed not only my manuscript but my entire approach to writing. Their editorial guidance was insightful, respectful, and ultimately brought my book to a level I couldn't have achieved alone.</p>
+                    <p class="testimonial-author">Sarah Johnson</p>
+                    <p class="testimonial-title">Author of "The Inner Journey"</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As an independent musician, I was looking for a publisher who would respect my artistic vision while helping me reach a wider audience. Empowered Publishing provided exactly that balance—maintaining the integrity of my music while opening doors I couldn't access on my own.</p>
+                    <p class="testimonial-author">James Rivera</p>
+                    <p class="testimonial-title">Songwriter, The River Collective</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The team at Empowered Publishing truly understands the business side of publishing without sacrificing the creative essence. Their royalty management is transparent, their communication is clear, and their passion for good work is evident in everything they do.</p>
+                    <p class="testimonial-author">Michael Torres</p>
+                    <p class="testimonial-title">Author of "Conscious Leadership"</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="process" class="process-section">
+            <h2>Our Publishing Process</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Submission</h4>
+                        <p>Submit your work through our online portal for review by our editorial team.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Evaluation</h4>
+                        <p>Receive thoughtful feedback on your submission and potential publishing path.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Development</h4>
+                        <p>Work with our experienced editors or producers to refine your creation.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Production</h4>
+                        <p>Transform your work into a professionally produced book or music release.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Distribution</h4>
+                        <p>Launch your work through our global distribution channels.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>Promotion</h4>
+                        <p>Collaborate on strategic marketing to connect with your audience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="submit" class="submission-section">
+            <h2>Ready to Share Your Creation?</h2>
+            <p>We're always looking for authentic voices and meaningful work that resonates with our mission of empowerment and transformation.</p>
+            <p>Our submission process is designed to be transparent and supportive, providing valuable feedback regardless of publication decisions.</p>
+            
+            <div class="submission-buttons">
+                <a href="#" class="cta-button">Submit a Manuscript</a>
+                <a href="#" class="cta-button">Submit Music</a>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>Have questions about our publishing services or want to learn more about working with us? We'd love to hear from you.</p>
+            
+            <div class="contact-info">
+                <div class="contact-method">
+                    <h4>Email</h4>
+                    <p>submissions@empoweredpublishing.com</p>
+                    <p>info@empoweredpublishing.com</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>Phone</h4>
+                    <p>(555) 123-4567</p>
+                    <p>Monday-Friday: 9am-5pm EST</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>Address</h4>
+                    <p>123 Creative Avenue</p>
+                    <p>Suite 456</p>
+                    <p>Artful City, AC 98765</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <h3>Empowered Publishing Studio</h3>
+        <p>Amplifying authentic voices through books and music</p>
+        
+        <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+            <a href="#">SoundCloud</a>
+        </div>
+        
+        <p>&copy; 2025 Empowered Publishing Studio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
